@@ -19,38 +19,42 @@ function computerPlay() {
   }
 }
 
-function playRound(playerSelection, computerPlay) {
+function playRound(playerSelection, computerSelection) {
   playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+  computerSelection = computerPlay();
   switch (playerSelection) {
     case null:
       return;
       break;
     case "rock":
-      if (computerPlay == "Rock") {
+      if (computerSelection == "Rock") {
         return "It's a draw.";
-      } else if (computerPlay == "Paper") {
+      } else if (computerSelection == "Paper") {
         return "You lose! Paper covers rock.";
       } else {
         return "You win! Rock breaks scissors.";
       };
       break;
       case "paper":
-      if (computerPlay == "Rock") {
+      if (computerSelection == "Rock") {
         return "You win! Paper covers rock.";
-      } else if (computerPlay == "Paper") {
+      } else if (computerSelection == "Paper") {
         return "It's a draw.";
       } else {
         return "You lose! Scissors cut paper.";
       };
       break;
       case "scissors":
-      if (computerPlay == "Rock") {
+      if (computerSelection == "Rock") {
         return "You lose! Rock breaks scissors.";
-      } else if (computerPlay == "Paper") {
+      } else if (computerSelection == "Paper") {
         return "You win! Scissors cut paper.";
       } else {
         return "It's a draw.";
       };
+      break;
+    default:
+      playRound(playerSelection, computerSelection);
       break;
   }
 }
