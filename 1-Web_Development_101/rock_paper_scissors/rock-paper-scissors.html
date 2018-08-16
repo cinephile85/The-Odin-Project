@@ -18,6 +18,42 @@ function computerPlay() {
     return "Scissors";
   }
 }
+
+function playRound(playerSelection, computerPlay) {
+  playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+  switch (playerSelection) {
+    case null:
+      return;
+      break;
+    case "rock":
+      if (computerPlay == "Rock") {
+        return "It's a draw.";
+      } else if (computerPlay == "Paper") {
+        return "You lose! Paper covers rock.";
+      } else {
+        return "You win! Rock breaks scissors.";
+      };
+      break;
+      case "paper":
+      if (computerPlay == "Rock") {
+        return "You win! Paper covers rock.";
+      } else if (computerPlay == "Paper") {
+        return "It's a draw.";
+      } else {
+        return "You lose! Scissors cut paper.";
+      };
+      break;
+      case "scissors":
+      if (computerPlay == "Rock") {
+        return "You lose! Rock breaks scissors.";
+      } else if (computerPlay == "Paper") {
+        return "You win! Scissors cut paper.";
+      } else {
+        return "It's a draw.";
+      };
+      break;
+  }
+}
 </script>
 
 </body>
