@@ -7,15 +7,14 @@
 <head>
 
 <body>
-
 <script>
 function computerPlay() {
   if ((Math.random() * 3) < 1) {
-    return "Rock";
+    return "rock";
   } else if ((Math.random() * 3) < 2) {
-    return "Paper";
+    return "paper";
   } else {
-    return "Scissors";
+    return "scissors";
   }
 }
 
@@ -27,27 +26,27 @@ function playRound(playerSelection, computerSelection) {
       return;
       break;
     case "rock":
-      if (computerSelection == "Rock") {
+      if (computerSelection = "rock") {
         return "It's a draw.";
-      } else if (computerSelection == "Paper") {
+      } else if (computerSelection = "paper") {
         return "You lose! Paper covers rock.";
       } else {
         return "You win! Rock breaks scissors.";
       };
       break;
       case "paper":
-      if (computerSelection == "Rock") {
+      if (computerSelection = "rock") {
         return "You win! Paper covers rock.";
-      } else if (computerSelection == "Paper") {
+      } else if (computerSelection = "paper") {
         return "It's a draw.";
       } else {
         return "You lose! Scissors cut paper.";
       };
       break;
       case "scissors":
-      if (computerSelection == "Rock") {
+      if (computerSelection = "rock") {
         return "You lose! Rock breaks scissors.";
-      } else if (computerSelection == "Paper") {
+      } else if (computerSelection = "paper") {
         return "You win! Scissors cut paper.";
       } else {
         return "It's a draw.";
@@ -59,7 +58,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 </script>
-
 </body>
 
 </html>
