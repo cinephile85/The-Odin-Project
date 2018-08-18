@@ -11,6 +11,7 @@
 function game() {
   function computerPlay() {
     let selection = Math.random() * 3;
+
     if (selection < 1) {
       return "rock";
     } else if (selection < 2) {
@@ -19,46 +20,26 @@ function game() {
       return "scissors";
     }
   }
-  
+
   function playRound(playerSelection, computerSelection) {
     playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
     computerSelection = computerPlay();
 
-    switch (playerSelection) {
-      case null:
-        exit;
-        break;
-      case "rock":
-        if (computerSelection === "rock") {
-          result = "draw";
-        } else if (computerSelection === "paper") {
-          result = "lose";
-        } else {
-          result = "win";
-        };
-        break;
-      case "paper":
-        if (computerSelection === "rock") {
-          result = "win";
-        } else if (computerSelection === "paper") {
-          result = "draw";
-        } else {
-          result = "lose";
-        };
-        break;
-      case "scissors":
-        if (computerSelection === "rock") {
-          result = "lose";
-        } else if (computerSelection === "paper") {
-          result = "win";
-        } else {
-          result = "draw";
-        };
-        break;
-      default:
-        playRound();
-        break;
+    if ((playerSelection === "rock" && computerSelection === "scissors") ||
+(playerSelection === "paper" && computerSelection === "rock") ||
+(playerSelection === "scissors" && computerSelection === "paper")) {
+      result = "win";
+    } else if ((playerSelection === "rock" && computerSelection === "paper") ||
+(playerSelection === "paper" && computerSelection === "scissors") ||
+(playerSelection === "scissors" && computerSelection === "rock")) {
+      result = "lose";
+    } else if (playerSelection === computerSelection) {
+      result = "draw";
+    } else {
+      playRound();
     }
+
+    console.log("Computer chose " + computerSelection + ".");
 
     switch (result) {
       case "win":
@@ -127,7 +108,7 @@ function game() {
 
     switch (again) {
       case null:
-        exit;
+        return;
         break;
       case "yes":
         console.clear();
@@ -138,10 +119,10 @@ function game() {
         game();
         break;
       case "no":
-        exit;
+        alert("Have a nice day!");
         break;
       case "n":
-        exit;
+        alert("Have a nice day!");
         break;
     }
   }
