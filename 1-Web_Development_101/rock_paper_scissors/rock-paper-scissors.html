@@ -41,28 +41,24 @@ function game() {
 
     console.log("Computer chose " + computerSelection + ".");
 
-    switch (result) {
-      case "win":
-        if (playerSelection === "rock") {
-          console.log(win + " " + rock);
-        } else if (playerSelection === "paper") {
-          console.log(win + " " + paper);
-        } else  if (playerSelection === "scissors") {
-          console.log(win + " " + scissors);
-        };
-        break;
-      case "lose":
-        if (playerSelection === "rock") {
-          console.log(lose + " " + paper);
-        } else if (playerSelection === "paper") {
-          console.log(lose + " " + scissors);
-        } else if (playerSelection === "scissors") {
-          console.log(lose + " " + rock);
-        };
-        break;
-      case "draw":
-        console.log(draw);
-        break;
+    if (result === "win") {
+      if (playerSelection === "rock") {
+        console.log(win + " " + rock);
+      } else if (playerSelection === "paper") {
+        console.log(win + " " + paper);
+      } else  if (playerSelection === "scissors") {
+        console.log(win + " " + scissors);
+      }
+    } else if (result === "lose") {
+      if (playerSelection === "rock") {
+        console.log(lose + " " + paper);
+      } else if (playerSelection === "paper") {
+        console.log(lose + " " + scissors);
+      } else if (playerSelection === "scissors") {
+        console.log(lose + " " + rock);
+      }
+    } else {
+      console.log(draw);
     }
 
     if (result === "win") {
@@ -106,24 +102,13 @@ function game() {
   function playAgain(again) {
     again = prompt("Play again?").toLowerCase();
 
-    switch (again) {
-      case null:
-        return;
-        break;
-      case "yes":
-        console.clear();
-        game();
-        break;
-      case "y":
-        console.clear();
-        game();
-        break;
-      case "no":
-        alert("Have a nice day!");
-        break;
-      case "n":
-        alert("Have a nice day!");
-        break;
+    if (again === null) {
+      return;
+    } else if (again === "yes" || again === "y") {
+      console.clear();
+      game();
+    } else if (again === "no" || again === "n") {
+      alert("Have a nice day!");
     }
   }
 
