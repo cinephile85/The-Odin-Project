@@ -36,7 +36,7 @@ function game() {
     } else if (playerSelection === computerSelection) {
       result = "draw";
     } else {
-      playRound();
+      return playRound();
     }
 
     console.log("Computer chose " + computerSelection + ".");
