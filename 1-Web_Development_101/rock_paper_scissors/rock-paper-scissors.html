@@ -9,54 +9,160 @@
 <body>
 <script>
 function computerPlay() {
-  if ((Math.random() * 3) < 1) {
+  let selection = Math.random() * 3;
+  if (selection < 1) {
     return "rock";
-  } else if ((Math.random() * 3) < 2) {
+  } else if (selection < 2) {
     return "paper";
   } else {
     return "scissors";
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
-  computerSelection = computerPlay();
-  switch (playerSelection) {
-    case null:
-      return;
-      break;
-    case "rock":
-      if (computerSelection = "rock") {
-        return "It's a draw.";
-      } else if (computerSelection = "paper") {
-        return "You lose! Paper covers rock.";
-      } else {
-        return "You win! Rock breaks scissors.";
-      };
-      break;
+function game() {
+  function playRound(playerSelection, computerSelection) {
+    playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+    computerSelection = computerPlay();
+
+    switch (playerSelection) {
+      case null:
+        exit;
+        break;
+      case "rock":
+        if (computerSelection === "rock") {
+          result = "draw";
+        } else if (computerSelection === "paper") {
+          result = "lose";
+        } else {
+          result = "win";
+        };
+        break;
       case "paper":
-      if (computerSelection = "rock") {
-        return "You win! Paper covers rock.";
-      } else if (computerSelection = "paper") {
-        return "It's a draw.";
-      } else {
-        return "You lose! Scissors cut paper.";
-      };
-      break;
+        if (computerSelection === "rock") {
+          result = "win";
+        } else if (computerSelection === "paper") {
+          result = "draw";
+        } else {
+          result = "lose";
+        };
+        break;
       case "scissors":
-      if (computerSelection = "rock") {
-        return "You lose! Rock breaks scissors.";
-      } else if (computerSelection = "paper") {
-        return "You win! Scissors cut paper.";
-      } else {
-        return "It's a draw.";
-      };
-      break;
-    default:
-      playRound(playerSelection, computerSelection);
-      break;
+        if (computerSelection === "rock") {
+          result = "lose";
+        } else if (computerSelection === "paper") {
+          result = "win";
+        } else {
+          result = "draw";
+        };
+        break;
+      default:
+        playRound();
+        break;
+    }
+
+    switch (result) {
+      case "win":
+        if (playerSelection === "rock") {
+          console.log(win + " " + rock);
+        } else if (playerSelection === "paper") {
+          console.log(win + " " + paper);
+        } else  if (playerSelection === "scissors") {
+          console.log(win + " " + scissors);
+        };
+        break;
+      case "lose":
+        if (playerSelection === "rock") {
+          console.log(lose + " " + paper);
+        } else if (playerSelection === "paper") {
+          console.log(lose + " " + scissors);
+        } else if (playerSelection === "scissors") {
+          console.log(lose + " " + rock);
+        };
+        break;
+      case "draw":
+        console.log(draw);
+        break;
+    }
+
+    if (result === "win") {
+      playerScore = playerScore + 1;
+    } else if (result === "lose") {
+      computerScore = computerScore + 1;
+    } else if (result !== "win" && result !== "lose") {
+      playerScore = playerScore;
+      computerScore = computerScore;
+    }
+
+    if ((playerSelection === "rock") || (playerSelection === "paper") || (playerSelection === "scissors")) {
+      round = round + 1;
+    }
   }
+
+  playRound();
+
+  console.log("You: " + playerScore + " Computer: " + computerScore)
+
+  if (round < 5) {
+    game();
+  }
+
+  if (playerScore > computerScore) {
+    console.log("You're the champion!");
+  } else if (playerScore < computerScore) {
+    console.log("Better luck next time.");
+  } else if (playerScore = computerScore) {
+    console.log("It's a tie.");
+  }
+
+  function clear() {
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+  }
+
+  clear();
+
+  function playAgain(again) {
+    again = prompt("Play again?").toLowerCase();
+
+    switch (again) {
+      case null:
+        exit;
+        break;
+      case "yes":
+        console.clear();
+        game();
+        break;
+      case "y":
+        console.clear();
+        game();
+        break;
+      case "no":
+        exit;
+        break;
+      case "n":
+        exit;
+        break;
+    }
+  }
+
+  playAgain();
 }
+
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+let result;
+
+const win = "You win!";
+const lose = "You lose!";
+const draw = "It's a draw.";
+
+const rock = "Rock breaks scissors.";
+const paper = "Paper covers rock.";
+const scissors = "Scissors cut paper.";
+
+game();
 </script>
 </body>
 
