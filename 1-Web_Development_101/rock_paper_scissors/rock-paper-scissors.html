@@ -102,9 +102,7 @@ function game() {
   function playAgain(again) {
     again = prompt("Play again?").toLowerCase();
 
-    if (again === null) {
-      return;
-    } else if (again === "yes" || again === "y") {
+    if (again === "yes" || again === "y") {
       console.clear();
       game();
     } else if (again === "no" || again === "n") {
