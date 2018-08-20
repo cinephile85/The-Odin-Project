@@ -9,6 +9,8 @@
 <body>
 <script>
 function game() {
+  alert("ROCK-PAPER-SCISSORS\n\n" + "Please open the console to see results.")
+
   function computerPlay() {
     let selection = Math.random() * 3;
 
@@ -22,7 +24,7 @@ function game() {
   }
 
   function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
+    playerSelection = prompt("Choose Rock, Paper, or Scissors", "rock/paper/scissors").toLowerCase();
     computerSelection = computerPlay();
 
     if ((playerSelection === "rock" && computerSelection === "scissors") ||
@@ -95,7 +97,7 @@ function game() {
   clear();
 
   function playAgain(again) {
-    again = prompt("Play again?").toLowerCase();
+    again = prompt("Play again?", "yes/no").toLowerCase();
 
     if (again === "yes" || again === "y") {
       console.clear();
