@@ -7,6 +7,10 @@
 <head>
 
 <body>
+<button id="rock">ROCK</button>
+<button id="paper">PAPER</button>
+<button id="scissors">SCISSORS</button>
+
 <script>
 alert("ROCK-PAPER-SCISSORS\n\n" + "Please open the console to see results.\n\n" +
       "Press Enter or click OK to continue.");
@@ -73,7 +77,7 @@ function game() {
 
   console.log("You: " + playerScore + " Computer: " + computerScore)
 
-if (playerScore > computerScore) {
+  if (playerScore > computerScore) {
     console.log("You're the champion!");
   } else if (playerScore < computerScore) {
     console.log("Better luck next time.");
