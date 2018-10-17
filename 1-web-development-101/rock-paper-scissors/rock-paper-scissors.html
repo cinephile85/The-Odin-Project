@@ -28,7 +28,6 @@ function game() {
   }
 
   function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt("Choose Rock, Paper, or Scissors", "rock/paper/scissors").toLowerCase();
     computerSelection = computerPlay();
 
     if ((playerSelection === "rock" && computerSelection === "scissors") ||
