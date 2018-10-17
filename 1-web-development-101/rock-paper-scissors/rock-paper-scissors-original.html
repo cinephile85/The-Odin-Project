@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Rock Paper Scissors</title>
+<head>
+
+<body>
+<script>
+alert("ROCK-PAPER-SCISSORS\n\n" + "Please open the console to see results.\n\n" +
+      "Press Enter or click OK to continue.");
+
+function game() {
+  function computerPlay() {
+    let selection = Math.random() * 3;
+
+    if (selection < 1) {
+      return "rock";
+    } else if (selection < 2) {
+      return "paper";
+    } else {
+      return "scissors";
+    }
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    playerSelection = prompt("Choose Rock, Paper, or Scissors", "rock/paper/scissors").toLowerCase();
+    computerSelection = computerPlay();
+
+    if ((playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "scissors" && computerSelection === "paper")) {
+      result = "win";
+    } else if ((playerSelection === "rock" && computerSelection === "paper") ||
+               (playerSelection === "paper" && computerSelection === "scissors") ||
+               (playerSelection === "scissors" && computerSelection === "rock")) {
+      result = "lose";
+    } else if (playerSelection === computerSelection) {
+      result = "draw";
+    } else {
+      return playRound();
+    }
+
+    console.log("Computer chose " + computerSelection + ".");
+
+    if (result === "win") {
+      playerScore = playerScore + 1;
+      if (playerSelection === "rock") {
+        console.log(win + " " + rock);
+      } else if (playerSelection === "paper") {
+        console.log(win + " " + paper);
+      } else  if (playerSelection === "scissors") {
+        console.log(win + " " + scissors);
+      }
+    } else if (result === "lose") {
+      computerScore = computerScore + 1;
+      if (playerSelection === "rock") {
+        console.log(lose + " " + paper);
+      } else if (playerSelection === "paper") {
+        console.log(lose + " " + scissors);
+      } else if (playerSelection === "scissors") {
+        console.log(lose + " " + rock);
+      }
+    } else {
+      console.log(draw);
+    }
+
+    round = round + 1;
+  }
+
+  playRound();
+
+  console.log("You: " + playerScore + " Computer: " + computerScore)
+
+  if (round < 5) {
+    if (playerScore < 3 && computerScore < 3) {
+      game();
+    }
+  }
+
+  if (playerScore > computerScore) {
+    console.log("You're the champion!");
+  } else if (playerScore < computerScore) {
+    console.log("Better luck next time.");
+  } else if (playerScore = computerScore) {
+    console.log("It's a tie.");
+  }
+
+  function clear() {
+    round = 0;
+    playerScore = 0;
+    computerScore = 0;
+  }
+
+  clear();
+
+  function playAgain(again) {
+    again = prompt("Play again?", "yes/no").toLowerCase();
+
+    if (again === "yes" || again === "y") {
+      console.clear();
+      game();
+    } else if (again === "no" || again === "n") {
+      alert("Have a nice day!");
+    } else {
+      return playAgain();
+    }
+  }
+
+  playAgain();
+}
+
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+let result;
+
+const win = "You win!";
+const lose = "You lose!";
+const draw = "It's a draw.";
+
+const rock = "Rock breaks scissors.";
+const paper = "Paper covers rock.";
+const scissors = "Scissors cut paper.";
+
+game();
+</script>
+</body>
+
+</html>
