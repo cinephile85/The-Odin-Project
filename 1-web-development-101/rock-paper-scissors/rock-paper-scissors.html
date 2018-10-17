@@ -73,13 +73,7 @@ function game() {
 
   console.log("You: " + playerScore + " Computer: " + computerScore)
 
-  if (round < 5) {
-    if (playerScore < 3 && computerScore < 3) {
-      game();
-    }
-  }
-
-  if (playerScore > computerScore) {
+if (playerScore > computerScore) {
     console.log("You're the champion!");
   } else if (playerScore < computerScore) {
     console.log("Better luck next time.");
